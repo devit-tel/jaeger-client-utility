@@ -12,6 +12,10 @@
     "jaeger-client": "^3.14.4",
     "ramda": "^0.26.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devit-tel/jaeger-client-utility.git"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
