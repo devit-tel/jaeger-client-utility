@@ -1,0 +1,23 @@
+{
+  "name": "jaeger-client-utility",
+  "version": "0.0.1",
+  "description": "Jaeger-client wrapper for more utility use",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon src/test.js --exec babel-node -e js"
+  },
+  "author": "Thanachote Khaosanit",
+  "license": "ISC",
+  "dependencies": {
+    "jaeger-client": "^3.14.4",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "nodemon": "^1.18.10"
+  }
+}
