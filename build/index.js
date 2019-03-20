@@ -7,6 +7,8 @@ exports.default = void 0;
 
 var _jaegerClient = require("jaeger-client");
 
+var _opentracing = require("opentracing");
+
 var _ramda = _interopRequireDefault(require("ramda"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -55,9 +57,16 @@ var startSpan = function startSpan(spanName) {
 
   var spanOptions = _ramda.default.omit(['isChild'], options);
 
+  var parentSpanContext;
+
   if (options.isChild && _typeof(options.isChild) === 'object') {
-    var parentSpanContext = getParentSpan(options.isChild.format, options.isChild.injectData);
+    parentSpanContext = getParentSpan(options.isChild.format, options.isChild.injectData);
     spanOptions.childOf = parentSpanContext;
+  }
+
+  if (options.isChild && _typeof(options.isChild) === 'object') {
+    parentSpanContext = getParentSpan(options.isFollowFrom.format, options.isFollowFrom.injectData);
+    spanOptions.references = [(0, _opentracing.followsFrom)(parentSpanContext)];
   }
 
   return tracer.startSpan(spanName, spanOptions);
