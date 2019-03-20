@@ -40,7 +40,7 @@ const init = (config, options) => {
 const getParentSpan = (format, injectData) => tracer.extract(format, injectData)
 
 const startSpan = (spanName, options = {}) => {
-  let spanOptions = R.omit(['isChild'], options)
+  let spanOptions = R.omit(['isChild','isFollowsFrom'], options)
   let parentSpanContext
 
   if (options.isChild && typeof options.isChild === 'object') {
