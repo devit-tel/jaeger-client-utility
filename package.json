@@ -1,6 +1,6 @@
 {
   "name": "jaeger-client-utility",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Jaeger-client wrapper for more utility use",
   "main": "./build/index.js",
   "scripts": {
