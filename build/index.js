@@ -64,8 +64,8 @@ var startSpan = function startSpan(spanName) {
     spanOptions.childOf = parentSpanContext;
   }
 
-  if (options.isChild && _typeof(options.isChild) === 'object') {
-    parentSpanContext = getParentSpan(options.isFollowFrom.format, options.isFollowFrom.injectData);
+  if (options.isFollowsFrom && _typeof(options.isChild) === 'object') {
+    parentSpanContext = getParentSpan(options.isFollowsFrom.format, options.isFollowsFrom.injectData);
     spanOptions.references = [(0, _opentracing.followsFrom)(parentSpanContext)];
   }
 
