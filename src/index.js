@@ -47,7 +47,7 @@ const startSpan = (spanName, options = {}) => {
     spanOptions.childOf = parentSpanContext
   }
 
-  if (options.isFollowsFrom && typeof options.isChild === 'object') {
+  if (options.isFollowsFrom && typeof options.isFollowsFrom === 'object') {
     const parentSpanContext = getParentSpan(options.isFollowsFrom.format, options.isFollowsFrom.injectData)
     spanOptions.references = [followsFrom(parentSpanContext)]
   }
