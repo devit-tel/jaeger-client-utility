@@ -55,7 +55,7 @@ var getParentSpan = function getParentSpan(format, injectData) {
 var startSpan = function startSpan(spanName) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-  var spanOptions = _ramda.default.omit(['isChild'], options);
+  var spanOptions = _ramda.default.omit(['isChild', 'isFollowsFrom'], options);
 
   var parentSpanContext;
 
