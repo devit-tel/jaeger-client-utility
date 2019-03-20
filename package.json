@@ -1,6 +1,6 @@
 {
   "name": "jaeger-client-utility",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Jaeger-client wrapper for more utility use",
   "main": "./build/index.js",
   "scripts": {
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "jaeger-client": "^3.14.4",
+    "opentracing": "^0.14.3",
     "ramda": "^0.26.1"
   },
   "repository": {
@@ -28,6 +29,7 @@
   },
   "keywords": [
     "jaeger",
-    "jaeger-client"
+    "jaeger-client",
+    "opentracing"
   ]
 }
