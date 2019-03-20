@@ -57,16 +57,15 @@ var startSpan = function startSpan(spanName) {
 
   var spanOptions = _ramda.default.omit(['isChild', 'isFollowsFrom'], options);
 
-  var parentSpanContext;
-
   if (options.isChild && _typeof(options.isChild) === 'object') {
-    parentSpanContext = getParentSpan(options.isChild.format, options.isChild.injectData);
+    var parentSpanContext = getParentSpan(options.isChild.format, options.isChild.injectData);
     spanOptions.childOf = parentSpanContext;
   }
 
   if (options.isFollowsFrom && _typeof(options.isChild) === 'object') {
-    parentSpanContext = getParentSpan(options.isFollowsFrom.format, options.isFollowsFrom.injectData);
-    spanOptions.references = [(0, _opentracing.followsFrom)(parentSpanContext)];
+    var _parentSpanContext = getParentSpan(options.isFollowsFrom.format, options.isFollowsFrom.injectData);
+
+    spanOptions.references = [(0, _opentracing.followsFrom)(_parentSpanContext)];
   }
 
   return tracer.startSpan(spanName, spanOptions);
