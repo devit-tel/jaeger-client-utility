@@ -1,4 +1,4 @@
-import { initTracer } from 'jaeger-client'
+import { initTracerFromEnv } from 'jaeger-client'
 import { followsFrom } from 'opentracing'
 import R from 'ramda'
 
@@ -34,25 +34,30 @@ const init = (config, options) => {
     ...options,
     ...DEFAULT_OPTIONS
   }
-  tracer = initTracer(tracerConfig, tracerOptions)
+  tracer = initTracerFromEnv(tracerConfig, tracerOptions)
 }
 
 const getParentSpan = (format, injectData) => tracer.extract(format, injectData)
 
 const startSpan = (spanName, options = {}) => {
-  let spanOptions = R.omit(['isChild','isFollowsFrom'], options)
+  let spanOptions = R.omit(['isChild', 'isFollowsFrom'], options)
 
   if (options.isChild && typeof options.isChild === 'object') {
-    const parentSpanContext = getParentSpan(options.isChild.format, options.isChild.injectData)
+    const parentSpanContext = getParentSpan(
+      options.isChild.format,
+      options.isChild.injectData
+    )
     spanOptions.childOf = parentSpanContext
   }
 
   if (options.isFollowsFrom && typeof options.isFollowsFrom === 'object') {
-    const parentSpanContext = getParentSpan(options.isFollowsFrom.format, options.isFollowsFrom.injectData)
+    const parentSpanContext = getParentSpan(
+      options.isFollowsFrom.format,
+      options.isFollowsFrom.injectData
+    )
     spanOptions.references = [followsFrom(parentSpanContext)]
   }
 
-  
   return tracer.startSpan(spanName, spanOptions)
 }
 
