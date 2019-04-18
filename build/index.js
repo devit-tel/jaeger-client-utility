@@ -45,7 +45,7 @@ var init = function init(config, options) {
 
   var tracerOptions = _objectSpread({}, options, DEFAULT_OPTIONS);
 
-  tracer = (0, _jaegerClient.initTracer)(tracerConfig, tracerOptions);
+  tracer = (0, _jaegerClient.initTracerFromEnv)(tracerConfig, tracerOptions);
 };
 
 var getParentSpan = function getParentSpan(format, injectData) {
